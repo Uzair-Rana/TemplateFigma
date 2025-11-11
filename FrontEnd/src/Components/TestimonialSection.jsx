@@ -1,4 +1,3 @@
-// src/Components/TestimonialSection.jsx
 import React from 'react';
 import twConfig from '../config/globalTailwindConfig';
 
@@ -37,24 +36,45 @@ const clientData = [
 
 // --- Individual Testimonial Card Component ---
 const TestimonialCard = ({ testimonial, clientName, avatarUrl }) => (
-    <div className={twConfig.testimonialSection.card.container}>
+    <div
+        className={`
+          ${twConfig.testimonialSection.card.container}
+          Mobile:flex Mobile:flex-col Mobile:items-center Mobile:justify-center Mobile:text-center Mobile:p-4 Mobile:gap-4
+          Tablet:p-[20px] Tablet:gap-[15px]
+        `}
+    >
         <img
-            className={twConfig.testimonialSection.card.avatar}
+            className={`
+              ${twConfig.testimonialSection.card.avatar}
+              Mobile:w-16 Mobile:h-16
+              Tablet:w-14 Tablet:h-14
+            `}
             src={avatarUrl}
             alt={`Avatar of ${clientName}`}
             onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = Client1; // fallback
+                e.target.src = Client1;
             }}
         />
 
-        <div className={twConfig.testimonialSection.card.contentWrapper}>
-            <p className={twConfig.testimonialSection.card.testimonialText}>
+        <div className={`
+          ${twConfig.testimonialSection.card.contentWrapper}
+          Mobile:flex Mobile:flex-col Mobile:items-center Mobile:justify-center Mobile:text-center
+        `}>
+            <span className={`
+              ${twConfig.testimonialSection.card.clientName}
+              Mobile:text-sm Mobile:mt-2
+              Tablet:text-sm
+            `}>
+                {clientName}
+            </span>
+            <p className={`
+              ${twConfig.testimonialSection.card.testimonialText}
+              Mobile:text-xm Mobile:leading-snug Mobile:mt-2
+              Tablet:text-base Tablet:leading-snug
+            `}>
                 {testimonial}
             </p>
-            <span className={twConfig.testimonialSection.card.clientName}>
-        {clientName}
-      </span>
         </div>
     </div>
 );
@@ -62,17 +82,33 @@ const TestimonialCard = ({ testimonial, clientName, avatarUrl }) => (
 // --- Main Testimonial Section Component ---
 const TestimonialSection = () => {
     return (
-        <div className={twConfig.testimonialSection.container}>
+        <div className={`
+          ${twConfig.testimonialSection.container}
+          Mobile:py-6 Mobile:px-2
+          Tablet:py-12 Tablet:px-2
+        `}>
             <div className={twConfig.testimonialSection.maxWrapper}>
                 {/* Section Heading */}
-                <div className={twConfig.testimonialSection.headingWrapper}>
-                    <h1 className={twConfig.testimonialSection.heading}>
+                <div className={`
+                  ${twConfig.testimonialSection.headingWrapper}
+                  Mobile:mb-4
+                  Tablet:mb-8
+                `}>
+                    <h1 className={`
+                      ${twConfig.testimonialSection.heading}
+                      Mobile:text-2xl
+                      Tablet:text-3xl
+                    `}>
                         Our Happy Clients
                     </h1>
                 </div>
 
                 {/* Testimonials Grid */}
-                <div className={twConfig.testimonialSection.grid}>
+                <div className={`
+                  ${twConfig.testimonialSection.grid}
+                  Mobile:grid-cols-1 Mobile:gap-4
+                  Tablet:grid-cols-2 Tablet:gap-6
+                `}>
                     {clientData.map((client, index) => (
                         <TestimonialCard
                             key={index}

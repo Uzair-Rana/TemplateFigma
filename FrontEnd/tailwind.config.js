@@ -12,12 +12,11 @@ module.exports = {
             boxShadow: theme.boxShadow,
             opacity: theme.opacity,
             screens: {
-                Mobile: '640px',   // smartphones
-                Tablet: '768px',   // tablets/small laptops
-                Laptop: '1024px',  // standard laptops/desktops
+                Mobile: {'max': '640px'},      // less than 640px
+                Tablet: {'max': '768px'},      // up to 786px
+                Laptop: '1024px',              // default min-width behavior
             },
         },
-
     },
     plugins: [],
 };

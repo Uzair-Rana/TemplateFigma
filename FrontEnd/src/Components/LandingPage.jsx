@@ -6,7 +6,7 @@ import twConfig from "../config/globalTailwindConfig";
 
 export default function LandingPage() {
     return (
-        <div className={`${twConfig.layout.fullScreenFlexCol} ${twConfig.background.light}`}>
+        <div className={`${twConfig.layout.fullScreenFlexCol} ${twConfig.background.light} Mobile:max-w-full`}>
 
             {/* Background Image */}
             <div

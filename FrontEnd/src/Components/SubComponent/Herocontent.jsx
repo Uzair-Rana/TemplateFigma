@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import Button from "./Button";
 import globalTailwindConfig from "../../config/globalTailwindConfig";
 
-const SlideCard = ({ title, heading, description, activeIndex, index, isFlipping, direction }) => {
+const SlideCard = ({
+                       title,
+                       heading,
+                       description,
+                       activeIndex,
+                       index,
+                       isFlipping,
+                       direction,
+                   }) => {
     const c = globalTailwindConfig.heroSection;
 
     const isActive = activeIndex === index;
@@ -15,18 +23,30 @@ const SlideCard = ({ title, heading, description, activeIndex, index, isFlipping
 
     return (
         <div
-            className={`${c.slideCard} ${isActive ? c.slideCardActive : c.slideCardInactive} ${rotateClass}`}
+            className={`${c.slideCard} ${
+                isActive ? c.slideCardActive : c.slideCardInactive
+            } ${rotateClass} Mobile:px-1 Mobile:mb-1 Tablet:px-2 Tablet:mb-3`}
             style={{
                 transformStyle: "preserve-3d",
                 backfaceVisibility: "hidden",
             }}
         >
-            <h4 className={c.title}>{title}</h4>
-            <h1 className={c.heading}>{heading}</h1>
-            <p className={c.description}>{description}</p>
+            <h4 className={`${c.title} Mobile:text-[10px] Tablet:text-[11px]`}>
+                {title}
+            </h4>
+            <h1
+                className={`${c.heading} Mobile:text-lg Tablet:text-xl Mobile:mb-2 Tablet:mb-3`}
+            >
+                {heading}
+            </h1>
+            <p
+                className={`${c.description} Mobile:text-xm Mobile:max-w-[50%] Tablet:text-base Mobile:mb-2 Tablet:mb-3`}
+            >
+                {description}
+            </p>
 
             {/* Dots */}
-            <div className={c.dotsWrapper}>
+            <div className={`${c.dotsWrapper} Mobile:space-x-2 Tablet:space-x-3`}>
                 {[0, 1, 2, 3, 4].map((dot) => (
                     <span
                         key={dot}
@@ -35,7 +55,7 @@ const SlideCard = ({ title, heading, description, activeIndex, index, isFlipping
                 ))}
             </div>
 
-            <Button>Create an Account</Button>
+            <Button className="Mobile:text-sm Tablet:text-base">Create an Account</Button>
         </div>
     );
 };
@@ -105,18 +125,17 @@ export default function HeroContent() {
 
     return (
         <div className={c.container}>
-            <div className={c.slidesWrapper}>
+            <div className={`${c.slidesWrapper} Mobile:min-h-[400px] Tablet:min-h-[500px]`}>
                 {/* Left Arrow */}
                 <button
                     onClick={prevSlide}
-                    className={c.arrowButton}
-                    style={{ left: "left-sideArrow", top: "top-topArrow", transform: "-translateY(50%)" }}
+                    className={`${c.arrowButton} Mobile:text-2xl Tablet:text-3xl`}
                 >
                     {/* SVG content */}
                 </button>
 
                 {/* Slides */}
-                <div className="relative flex justify-center items-center w-full min-h-minHeroHeight">
+                <div className="relative flex justify-center items-center w-full">
                     {slides.map((slide, index) => (
                         <SlideCard
                             key={index}
@@ -134,8 +153,7 @@ export default function HeroContent() {
                 {/* Right Arrow */}
                 <button
                     onClick={nextSlide}
-                    className={c.arrowButtonRight}
-                    style={{ right: "right-sideArrow", top: "top-topArrow", transform: "-translateY(50%)" }}
+                    className={`${c.arrowButtonRight} Mobile:text-2xl Tablet:text-3xl`}
                 >
                     {/* SVG content */}
                 </button>

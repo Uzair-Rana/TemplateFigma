@@ -43,7 +43,7 @@ const globalTailwindConfig = {
     },
 
     heroSection: {
-        container: "relative z-10 flex flex-col items-center mt-mtHero text-center text-light mb-mbHero",
+        container: "relative z-10 flex flex-col items-center mt-[142px] Mobile:mt-[20px] Tablet:m-[5px] text-center text-light",
         slidesWrapper: "relative flex justify-center items-center w-full min-h-minHeroHeight perspective-[1000px]",
         arrowButton: "absolute text-white text-3xl font-normal hover:opacity-100 transition-opacity",
         arrowButtonRight: "absolute text-white text-3xl font-normal hover:text-accent transition-colors",
@@ -198,23 +198,29 @@ const globalTailwindConfig = {
 
     pricingTableSection: {
         container: "relative w-full overflow-hidden bg-indigo-900 bg-cover bg-center",
-        header: "absolute text-center text-white text-5xl font-bold leading-[52px]",
-        subHeader: "absolute text-center text-white text-xl font-medium leading-8",
-        card: "absolute opacity-20 rounded-[10px] border-2 border-white",
-        cardTitle: "absolute text-white text-xl font-medium leading-8",
-        cardPrice: "absolute text-white text-6xl font-bold leading-[70px]",
-        cardDollarSign: "absolute text-white text-base",
-        featureDot: "absolute w-3 h-3 bg-white rounded-full",
-        featureText: "absolute text-white text-base font-normal font-['DM_Sans'] leading-6",
-        getStartedButton: "absolute w-56 h-14",
-        buttonInner: "w-56 h-14 rounded-[100px] border-2 border-white transition-colors",
-        buttonText: "absolute left-[60px] top-[17px] text-white text-xl font-medium font-['DM_Sans'] leading-6",
-        buttonPink: "bg-pink-600 border-none",
+        header: "text-white text-5xl font-bold leading-[52px]",
+        subHeader: "text-white text-xl font-medium leading-8",
+        cardContainer: "relative w-full h-full",
+        cardBackground: "absolute top-0 left-0 w-full h-full rounded-[10px] border-2 border-white backdrop-blur-sm",
+        cardContent: "relative w-full h-full p-10 flex flex-col justify-between",
+        cardTitle: "text-white text-xl font-medium leading-8 font-['DM_Sans']",
+        cardPrice: "text-white text-6xl font-bold leading-[70px] font-['DM_Sans']",
+        cardDollarSign: "text-white text-base font-normal font-['DM_Sans'] mt-3 ml-1",
+        featureRow: "flex items-start text-left mb-2.5",
+        featureDotWrapper: "flex items-center w-6 h-6 flex-shrink-0",
+        featureDot: "w-2 h-2 bg-white rounded-full",
+        featureText: "text-white text-base font-normal font-['DM_Sans'] leading-6 text-left",
+        getStartedButtonWrapper: "flex justify-center mt-auto pt-8",
+        getStartedButton: "w-56 h-14 relative",
+        buttonInner: "w-56 h-14 rounded-[100px] border-2 border-white absolute top-0 left-0 transition-colors",
+        buttonText: "absolute w-full h-full text-center text-white text-xl font-medium font-['DM_Sans'] leading-6 flex justify-center items-center",
+        buttonPink: "bg-pink-600 border-none opacity-100",
     },
+
     // Add this to your existing globalTailwindConfig.js
 
     footerSection: {
-        container: "relative w-full overflow-hidden bg-indigo-900",
+        container: "relative w-full overflow-hidden bg-[#2F1893]",
         logo: "absolute text-white text-2xl font-bold font-['DM_Sans']",
         policyLink: "absolute text-white text-base font-normal font-['DM_Sans']",
         socialIcon: "absolute text-white text-lg font-normal uppercase",
