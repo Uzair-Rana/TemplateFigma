@@ -1,124 +1,247 @@
 import React from "react";
-
-// ✅ Import your background image from assets folder
+import globalTailwindConfig from "../config/globalTailwindConfig";
 import PricingTableBg from "../assets/PricingTable.png";
 
-// Component to render a single feature row
-const FeatureRow = ({ text, top, isIncluded = true, textLeft, opacity = 1 }) => (
-    <>
-        {/* Optional checkmark (only if included) */}
-        {isIncluded && (
+// Helper function to convert px to percentage based on design width/height
+const toPercent = (value, total) => `${(value / total) * 100}%`;
+
+// Feature row component
+const FeatureRow = ({ text, leftPx, topPx, isIncluded = true, opacity = 1 }) => {
+    const c = globalTailwindConfig.pricingTableSection;
+    return (
+        <>
+            {isIncluded && (
+                <div
+                    className={c.featureDot}
+                    style={{
+                        left: toPercent(leftPx - 25, 1440),
+                        top: toPercent(topPx + 3, 1130),
+                    }}
+                />
+            )}
             <div
-                className="absolute w-3 h-3 bg-white rounded-full"
-                style={{ left: `${textLeft - 25}px`, top: `${top + 3}px` }}
-            ></div>
-        )}
-        <div
-            className="absolute text-white text-base font-normal font-['DM_Sans'] leading-6"
-            style={{ left: `${textLeft}px`, top: `${top}px`, opacity }}
-        >
-            {text}
-        </div>
-    </>
-);
+                className={c.featureText}
+                style={{
+                    left: toPercent(leftPx, 1440),
+                    top: toPercent(topPx, 1130),
+                    opacity,
+                }}
+            >
+                {text}
+            </div>
+        </>
+    );
+};
 
-// Component for the CTA Button
-const GetStartedButton = ({ left, isPink = false }) => (
-    <div className="w-56 h-14 absolute" style={{ left: `${left}px`, top: "914px" }}>
-        <div
-            className={`w-56 h-14 left-0 top-0 absolute rounded-[100px] border-2 border-white transition-colors 
-      ${isPink ? "bg-pink-600 border-none" : "opacity-30"}`}
-        />
-        <div className="absolute left-[60px] top-[17px] text-white text-xl font-medium font-['DM_Sans'] leading-6">
-            Get Started
-        </div>
-    </div>
-);
-
-export default function PricingTable() {
+// CTA Button component
+const GetStartedButton = ({ leftPx, topPx, isPink = false }) => {
+    const c = globalTailwindConfig.pricingTableSection;
     return (
         <div
-            className="relative w-[1400px] h-[1130px] overflow-hidden bg-indigo-900 bg-cover bg-center"
+            className={c.getStartedButton}
             style={{
-                backgroundImage: `url(${PricingTableBg})`, // ✅ background applied here
+                left: toPercent(leftPx, 1440),
+                top: toPercent(topPx, 1130),
             }}
         >
-            {/* --- HEADER --- */}
-            <div className="absolute left-[553.5px] top-[100px] text-center text-white text-5xl font-bold leading-[52px]">
+            <div className={`${c.buttonInner} ${isPink ? c.buttonPink : "opacity-30"}`} />
+            <div className={c.buttonText}>Get Started</div>
+        </div>
+    );
+};
+
+export default function PricingTable() {
+    const c = globalTailwindConfig.pricingTableSection;
+
+    return (
+        <div
+            className={c.container}
+            style={{
+                height: "1130px",
+                backgroundImage: `url(${PricingTableBg})`,
+                maxWidth: "1440px",
+                margin: "0 auto",
+            }}
+        >
+            {/* HEADER */}
+            <div
+                className={c.header}
+                style={{ left: toPercent(553.5, 1440), top: toPercent(100, 1130) }}
+            >
                 Plans & Pricing
             </div>
-
-            <div className="absolute w-[586px] left-[408px] top-[182px] text-center text-white text-xl font-medium leading-8">
+            <div
+                className={c.subHeader}
+                style={{
+                    left: toPercent(408, 1440),
+                    top: toPercent(182, 1130),
+                    width: toPercent(586, 1440),
+                }}
+            >
                 Startup Framework is free forever — you only pay for custom domain
                 hosting or to export your site.
             </div>
 
-            {/* --- PRICING CARDS --- */}
-            {/* 1️⃣ Starter */}
-            <div className="absolute w-96 h-[730px] left-[115px] top-[300px] opacity-20 rounded-[10px] border-2 border-white" />
-            <div className="absolute left-[184px] top-[364.2px] text-white text-xl font-medium leading-8">
+            {/* PRICING CARDS */}
+
+            {/* Starter */}
+            <div
+                className={c.card}
+                style={{
+                    left: toPercent(115, 1440),
+                    top: toPercent(300, 1130),
+                    width: toPercent(384, 1440),
+                    height: toPercent(730, 1130),
+                }}
+            />
+            <div
+                className={c.cardTitle}
+                style={{ left: toPercent(184, 1440), top: toPercent(364.2, 1130) }}
+            >
                 Starter
             </div>
-            <div className="absolute left-[184px] top-[418.8px] text-white text-6xl font-bold leading-[70px]">
+            <div
+                className={c.cardPrice}
+                style={{ left: toPercent(308, 1440), top: toPercent(418.8, 1130) }}
+            >
                 9.99
             </div>
-            <div className="absolute left-[308px] top-[430.4px] text-white text-base">$</div>
+            <div
+                className={c.cardDollarSign}
+                style={{ left: toPercent(308 + 32, 1440), top: toPercent(430.4, 1130) }}
+            >
+                $
+            </div>
 
-            <FeatureRow text="2 GB of space" top={533.4} textLeft={186} />
-            <FeatureRow text="14 days of backups" top={569.4} textLeft={184} />
-            <FeatureRow text="Social integrations" top={605.4} textLeft={190} />
-            <FeatureRow text="Client billing" top={641.4} textLeft={184} />
-            <FeatureRow text="Remote access" top={677.4} textLeft={190} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="Custom domain" top={713.4} textLeft={190} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="24 hours support" top={749.4} textLeft={187} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="Admin tools" top={785.4} textLeft={184} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="Collaboration tools" top={821.4} textLeft={190} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="User management" top={857.4} textLeft={192} isIncluded={false} opacity={0.6} />
-            <GetStartedButton left={185} isPink={false} />
+            {[
+                "2 GB of space",
+                "14 days of backups",
+                "Social integrations",
+                "Client billing",
+                "Remote access",
+                "Custom domain",
+                "24 hours support",
+                "Admin tools",
+                "Collaboration tools",
+                "User management",
+            ].map((text, i) => (
+                <FeatureRow
+                    key={i}
+                    text={text}
+                    leftPx={i % 2 === 0 ? 186 : 190}
+                    topPx={533.4 + i * 36}
+                    isIncluded={i < 4}
+                    opacity={i < 4 ? 1 : 0.6}
+                />
+            ))}
 
-            {/* 2️⃣ Professional */}
-            <div className="absolute w-96 h-[730px] left-[515px] top-[300px] opacity-20 rounded-[10px] border-2 border-white" />
-            <div className="absolute left-[584px] top-[364.2px] text-white text-xl font-medium leading-8">
+            <GetStartedButton leftPx={185} topPx={914} isPink={false} />
+
+            {/* Professional */}
+            <div
+                className={c.card}
+                style={{
+                    left: toPercent(515, 1440),
+                    top: toPercent(300, 1130),
+                    width: toPercent(384, 1440),
+                    height: toPercent(730, 1130),
+                }}
+            />
+            <div
+                className={c.cardTitle}
+                style={{ left: toPercent(584, 1440), top: toPercent(364.2, 1130) }}
+            >
                 Professional
             </div>
-            <div className="absolute left-[595px] top-[418.8px] text-white text-6xl font-bold leading-[70px]">
+            <div
+                className={c.cardPrice}
+                style={{ left: toPercent(595, 1440), top: toPercent(418.8, 1130) }}
+            >
                 19.99
             </div>
-            <div className="absolute left-[741px] top-[430.4px] text-white text-base">$</div>
+            <div
+                className={c.cardDollarSign}
+                style={{ left: toPercent(741, 1440), top: toPercent(430.4, 1130) }}
+            >
+                $
+            </div>
 
-            <FeatureRow text="2 GB of space" top={533.4} textLeft={584} />
-            <FeatureRow text="14 days of backups" top={569.4} textLeft={584} />
-            <FeatureRow text="Social integrations" top={605.4} textLeft={584} />
-            <FeatureRow text="Client billing" top={641.4} textLeft={584} />
-            <FeatureRow text="Remote access" top={677.4} textLeft={584} />
-            <FeatureRow text="Custom domain" top={713.4} textLeft={584} />
-            <FeatureRow text="24 hours support" top={749.4} textLeft={584} />
-            <FeatureRow text="Admin tools" top={785.4} textLeft={584} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="Collaboration tools" top={821.4} textLeft={590} isIncluded={false} opacity={0.6} />
-            <FeatureRow text="User management" top={857.4} textLeft={584} isIncluded={false} opacity={0.6} />
-            <GetStartedButton left={585} isPink={true} />
+            {[...Array(10)].map((_, i) => (
+                <FeatureRow
+                    key={i + 100}
+                    text={[
+                        "2 GB of space",
+                        "14 days of backups",
+                        "Social integrations",
+                        "Client billing",
+                        "Remote access",
+                        "Custom domain",
+                        "24 hours support",
+                        "Admin tools",
+                        "Collaboration tools",
+                        "User management",
+                    ][i]}
+                    leftPx={584}
+                    topPx={533.4 + i * 36}
+                    isIncluded={i < 6}
+                    opacity={i < 6 ? 1 : 0.6}
+                />
+            ))}
 
-            {/* 3️⃣ Team */}
-            <div className="absolute w-96 h-[730px] left-[915px] top-[300px] opacity-20 rounded-[10px] border-2 border-white" />
-            <div className="absolute left-[984px] top-[364.2px] text-white text-xl font-medium leading-8">
+            <GetStartedButton leftPx={585} topPx={914} isPink={true} />
+
+            {/* Team */}
+            <div
+                className={c.card}
+                style={{
+                    left: toPercent(915, 1440),
+                    top: toPercent(300, 1130),
+                    width: toPercent(384, 1440),
+                    height: toPercent(730, 1130),
+                }}
+            />
+            <div
+                className={c.cardTitle}
+                style={{ left: toPercent(984, 1440), top: toPercent(364.2, 1130) }}
+            >
                 Team
             </div>
-            <div className="absolute left-[987px] top-[418.8px] text-white text-6xl font-bold leading-[70px]">
+            <div
+                className={c.cardPrice}
+                style={{ left: toPercent(987, 1440), top: toPercent(418.8, 1130) }}
+            >
                 49.99
             </div>
-            <div className="absolute left-[1147px] top-[430.4px] text-white text-base">$</div>
+            <div
+                className={c.cardDollarSign}
+                style={{ left: toPercent(1147, 1440), top: toPercent(430.4, 1130) }}
+            >
+                $
+            </div>
 
-            <FeatureRow text="2 GB of space" top={533.4} textLeft={986} />
-            <FeatureRow text="14 days of backups" top={569.4} textLeft={989} />
-            <FeatureRow text="Social integrations" top={605.4} textLeft={990} />
-            <FeatureRow text="Client billing" top={641.4} textLeft={984} />
-            <FeatureRow text="Remote access" top={677.4} textLeft={990} />
-            <FeatureRow text="Custom domain" top={713.4} textLeft={990} />
-            <FeatureRow text="24 hours support" top={749.4} textLeft={987} />
-            <FeatureRow text="Admin tools" top={785.4} textLeft={987} />
-            <FeatureRow text="Collaboration tools" top={821.4} textLeft={990} />
-            <FeatureRow text="User management" top={857.4} textLeft={984} />
-            <GetStartedButton left={985} isPink={false} />
+            {[...Array(10)].map((_, i) => (
+                <FeatureRow
+                    key={i + 200}
+                    text={[
+                        "2 GB of space",
+                        "14 days of backups",
+                        "Social integrations",
+                        "Client billing",
+                        "Remote access",
+                        "Custom domain",
+                        "24 hours support",
+                        "Admin tools",
+                        "Collaboration tools",
+                        "User management",
+                    ][i]}
+                    leftPx={986}
+                    topPx={533.4 + i * 36}
+                    isIncluded={i < 7}
+                    opacity={i < 7 ? 1 : 0.6}
+                />
+            ))}
+
+            <GetStartedButton leftPx={985} topPx={914} isPink={false} />
         </div>
     );
 }

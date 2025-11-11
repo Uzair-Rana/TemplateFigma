@@ -1,83 +1,134 @@
-import React from 'react';
+import React from "react";
+import globalTailwindConfig from "../config/globalTailwindConfig";
+
+// Helper function to convert px to percentage of design
+const toPercent = (value, total) => `${(value / total) * 100}%`;
 
 export default function Footer() {
-    // Placeholder characters for FontAwesome icons to maintain layout position
-    const ICON_TWITTER = ""; // \f099
-    const ICON_FACEBOOK = ""; // \f09a
-    const ICON_GOOGLE_PLUS = ""; // \f0d5
+    const c = globalTailwindConfig.footerSection;
+
+    const ICON_TWITTER = "";
+    const ICON_FACEBOOK = "";
+    const ICON_GOOGLE_PLUS = "";
+
+    const designWidth = 1440; // original design width
+    const designHeight = 240; // original design height
 
     return (
-        // Main Container: Fixed 1400px width and 240px height
-        <div className="w-[1400px] h-60 relative bg-indigo-900 overflow-hidden">
-
-            {/* Logo: Startup 3 */}
-            <div className="w-44 h-5 left-[115px] top-[54px] absolute">
-                <div className="left-[2px] top-[-6px] absolute text-center justify-start text-white text-2xl font-bold font-['DM_Sans']">
-                    Startup 3
-                </div>
+        <div
+            className={c.container}
+            style={{
+                height: "240px",
+                maxWidth: "1440px",
+                margin: "0 auto",
+            }}
+        >
+            {/* Logo */}
+            <div
+                className={c.logo}
+                style={{
+                    left: toPercent(115, designWidth),
+                    top: toPercent(54, designHeight),
+                }}
+            >
+                Startup 3
             </div>
 
-            {/* Policy Links (Right side, Top row) */}
-            <div className="left-[971px] top-[49.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
+            {/* Policy Links */}
+            <div
+                className={c.policyLink}
+                style={{
+                    left: toPercent(971, designWidth),
+                    top: toPercent(49.4, designHeight),
+                }}
+            >
                 Privacy Policy
             </div>
-            <div className="left-[1100px] top-[49.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
+            <div
+                className={c.policyLink}
+                style={{
+                    left: toPercent(1100, designWidth),
+                    top: toPercent(49.4, designHeight),
+                }}
+            >
                 Terms
             </div>
 
-            {/* Social Icons (Far Right) */}
+            {/* Social Icons */}
             <div
-                className="left-[1175px] top-[53.20px] absolute justify-start text-white text-lg font-normal font-['FontAwesome'] uppercase leading-6"
-                // Adjusted FontAwesome character to be visible text for exact positioning
-                style={{ fontFamily: 'sans-serif' }}
+                className={c.socialIcon}
+                style={{
+                    left: toPercent(1175, designWidth),
+                    top: toPercent(53.2, designHeight),
+                    fontFamily: "sans-serif",
+                }}
             >
                 {ICON_TWITTER}
             </div>
             <div
-                className="left-[1221px] top-[53.20px] absolute justify-start text-white text-lg font-normal font-['FontAwesome'] uppercase leading-6"
-                style={{ fontFamily: 'sans-serif' }}
+                className={c.socialIcon}
+                style={{
+                    left: toPercent(1221, designWidth),
+                    top: toPercent(53.2, designHeight),
+                    fontFamily: "sans-serif",
+                }}
             >
                 {ICON_FACEBOOK}
             </div>
             <div
-                className="left-[1261px] top-[53.20px] absolute justify-start text-white text-lg font-normal font-['FontAwesome'] uppercase leading-6"
-                style={{ fontFamily: 'sans-serif' }}
+                className={c.socialIcon}
+                style={{
+                    left: toPercent(1261, designWidth),
+                    top: toPercent(53.2, designHeight),
+                    fontFamily: "sans-serif",
+                }}
             >
                 {ICON_GOOGLE_PLUS}
             </div>
 
-            {/* Separator Line (Divider) */}
+            {/* Separator Line */}
             <div
-                className="w-[1169px] h-0.5 left-[116px] top-[120px] absolute opacity-30 outline outline-2 outline-offset-[-1px] outline-white"
-                // Use a simple white background with reduced opacity for the divider line
-                style={{ backgroundColor: 'white', opacity: 0.3, height: '2px', border: 'none' }}
+                className={c.separatorLine}
+                style={{
+                    left: toPercent(116, designWidth),
+                    top: toPercent(120, designHeight),
+                    width: toPercent(1169, designWidth),
+                    height: "2px",
+                }}
             />
 
-            {/* Main Navigation Links (Bottom row, Left side) */}
-            <div className="left-[115px] top-[169.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
-                Tour
-            </div>
-            <div className="left-[176px] top-[169.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
-                Features
-            </div>
-            <div className="left-[267px] top-[169.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
-                Pricing Plans
-            </div>
-            <div className="left-[387px] top-[169.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
-                Our Works
-            </div>
-            <div className="left-[493px] top-[169.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
-                Brands
-            </div>
-            <div className="left-[574px] top-[169.40px] absolute justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
-                Contacts
-            </div>
+            {/* Navigation Links */}
+            {[
+                { text: "Tour", left: 115 },
+                { text: "Features", left: 176 },
+                { text: "Pricing Plans", left: 267 },
+                { text: "Our Works", left: 387 },
+                { text: "Brands", left: 493 },
+                { text: "Contacts", left: 574 },
+            ].map((item, i) => (
+                <div
+                    key={i}
+                    className={c.navLink}
+                    style={{
+                        left: toPercent(item.left, designWidth),
+                        top: toPercent(169.4, designHeight),
+                    }}
+                >
+                    {item.text}
+                </div>
+            ))}
 
-            {/* Copyright Text (Bottom row, Right side) */}
-            <div className="left-[993px] top-[169.40px] absolute text-right justify-start text-white text-base font-normal font-['DM_Sans'] leading-6">
+            {/* Copyright */}
+            <div
+                className={c.copyright}
+                style={{
+                    left: toPercent(993, designWidth),
+                    top: toPercent(169.4, designHeight),
+                    width: toPercent(400, designWidth),
+                }}
+            >
                 © 2017 Designmodo. All rights reserved.
             </div>
-
         </div>
     );
 }

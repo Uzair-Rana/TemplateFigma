@@ -1,69 +1,37 @@
-import { useState } from "react";
+import React from "react";
+import globalTailwindConfig from "../../config/globalTailwindConfig";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const c = globalTailwindConfig.navbarSection;
 
     return (
-        <nav className="w-full px-4 lg:px-0 mx-auto mt-[20px]">
-            {/* Mobile & Tablet Top Bar */}
-            <div className="lg:hidden flex items-center justify-between bg-indigo-900 px-4 py-3 rounded-xl shadow-md">
-                {/* Hamburger Icon */}
-                <button
-                    className="text-white text-2xl font-bold focus:outline-none"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    ☰
-                </button>
-
-                {/* Title */}
-                <div className="text-white text-lg font-medium font-['DM_Sans'] text-center flex-1">
-                    Uzair's App
-                </div>
-
-                {/* Placeholder to balance layout */}
-                <div className="w-8"></div>
-            </div>
-
-            {/* Mobile Menu Items */}
-            {isOpen && (
-                <div className="lg:hidden mt-2 bg-indigo-800 rounded-xl shadow-md w-full max-w-[469px] mx-auto flex flex-col items-center py-4 space-y-3">
-                    <div className="text-white text-lg font-medium hover:text-teal-400 cursor-pointer">
-                        Home
-                    </div>
-                    <div className="text-white text-lg font-medium hover:text-teal-400 cursor-pointer">
-                        Features
-                    </div>
-                    <div className="text-white text-lg font-medium hover:text-teal-400 cursor-pointer">
-                        Pricing
-                    </div>
-                    <div className="text-white text-lg font-medium hover:text-teal-400 cursor-pointer">
-                        Blog
-                    </div>
-                    <div className="flex space-x-6 text-white text-lg font-normal mt-2">
-                        <div className="font-['FontAwesome'] hover:text-teal-400 cursor-pointer"></div>
-                        <div className="font-['FontAwesome'] hover:text-teal-400 cursor-pointer"></div>
-                    </div>
-                </div>
-            )}
-
-            {/* Desktop Menu (original design) */}
-            <div className="hidden lg:block relative w-[469px] h-6 mx-auto mt-[85px]">
-                <div className="absolute left-0 top-0 text-white text-lg font-medium font-['DM_Sans'] leading-6 opacity-30">
+        <nav className={c.container}>
+            <div className={c.menuWrapper}>
+                {/* Home (Inactive) */}
+                <div className={c.menuItemInactive} style={{ left: 0, top: 0 }}>
                     Home
                 </div>
-                <div className="absolute left-[94px] top-0 text-white text-lg font-medium font-['DM_Sans'] leading-6">
+
+                {/* Features */}
+                <div className={c.menuItem} style={{ left: 94, top: 0 }}>
                     Features
                 </div>
-                <div className="absolute left-[212px] top-0 text-white text-lg font-medium font-['DM_Sans'] leading-6">
+
+                {/* Pricing */}
+                <div className={c.menuItem} style={{ left: 212, top: 0 }}>
                     Pricing
                 </div>
-                <div className="absolute left-[313px] top-0 text-white text-lg font-medium font-['DM_Sans'] leading-6">
+
+                {/* Blog */}
+                <div className={c.menuItem} style={{ left: 313, top: 0 }}>
                     Blog
                 </div>
-                <div className="absolute left-[392px] top-[3.2px] text-white text-lg font-normal font-['FontAwesome']">
+
+                {/* Icons */}
+                <div className={c.icon} style={{ left: 392, top: 3.2 }}>
                     
                 </div>
-                <div className="absolute left-[448px] top-[3.2px] text-white text-lg font-normal font-['FontAwesome']">
+                <div className={c.icon} style={{ left: 448, top: 3.2 }}>
                     
                 </div>
             </div>

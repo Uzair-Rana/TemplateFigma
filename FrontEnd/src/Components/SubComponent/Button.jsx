@@ -1,11 +1,12 @@
-// src/Components/Subcomponents/Button.jsx
+import React from "react";
+import globalTailwindConfig from "../../config/globalTailwindConfig";
+
 export default function Button({ children, onClick }) {
+    const c = globalTailwindConfig.buttonSection;
+
     return (
-        <div className="mb-[163px]">
-            <button
-                onClick={onClick}
-                className="px-[41px] py-[16px] bg-blue-700 text-white text-lg font-semibold rounded-full shadow-soft hover:shadow-glow transition-all duration-300"
-            >
+        <div className={c.wrapper}>
+            <button onClick={onClick} className={c.button}>
                 {children}
             </button>
         </div>

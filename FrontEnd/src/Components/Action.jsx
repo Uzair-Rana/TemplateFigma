@@ -1,42 +1,47 @@
+// src/Components/Action.jsx
 import { useState } from "react";
 import Rectangle from "../assets/Rectangle.png";
+import twConfig from "../config/globalTailwindConfig";
 
 export default function HeroSection() {
     const [isVideoOpen, setIsVideoOpen] = useState(false);
 
     return (
-        <div className="relative w-full mx-auto h-[605px] bg-indigo-900 overflow-hidden">
+        <div className={twConfig.actionSection.container}>
             {/* Background Image */}
             <img
-                className="w-full h-full object-cover"
+                className={twConfig.actionSection.backgroundImage}
                 src={Rectangle}
                 alt="Background"
             />
 
-            {/* Content Wrapper (Centered vertically) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-6 px-4">
+            {/* Content Wrapper */}
+            <div className={twConfig.actionSection.contentWrapper}>
                 {/* Heading */}
-                <h1 className="text-white font-bold font-['DM_Sans'] text-5xl sm:text-4xl md:text-6xl leading-tight">
-                    Easy to setup<br />Easy to maintain
+                <h1 className={twConfig.actionSection.heading}>
+                    Easy to setup
+                    <br />
+                    Easy to maintain
                 </h1>
 
                 {/* Subheading */}
-                <p className="text-white font-light font-['DM_Sans'] text-2xl  leading-8 max-w-[518px] opacity-90">
-                    Bootstrap is a widely-used, sleek, intuitive and powerful front-end framework for faster and easier web development.
+                <p className={twConfig.actionSection.subheading}>
+                    Bootstrap is a widely-used, sleek, intuitive and powerful front-end
+                    framework for faster and easier web development.
                 </p>
 
                 {/* Buttons Container */}
-                <div className="flex items-center justify-center gap-5 mt-6">
+                <div className={twConfig.actionSection.buttonsWrapper}>
                     {/* YouTube Circle Button */}
                     <button
-                        className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition"
+                        className={twConfig.actionSection.youtubeButton}
                         onClick={() => setIsVideoOpen(true)}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="white"
-                            className="w-6 h-6"
+                            className={twConfig.actionSection.youtubeIcon}
                         >
                             <path d="M4 2v20l18-10L4 2z" />
                         </svg>
@@ -44,8 +49,8 @@ export default function HeroSection() {
 
                     {/* Get Started Button */}
                     <button
-                        className="bg-teal-400 rounded-full w-52 h-16 text-white text-xl font-medium font-['DM_Sans'] flex items-center justify-center hover:bg-teal-500 transition"
-                        onClick={() => alert('Get Started clicked!')}
+                        className={twConfig.actionSection.getStartedButton}
+                        onClick={() => alert("Get Started clicked!")}
                     >
                         Get Started
                     </button>
@@ -55,12 +60,12 @@ export default function HeroSection() {
             {/* Video Modal */}
             {isVideoOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+                    className={twConfig.actionSection.videoModal}
                     onClick={() => setIsVideoOpen(false)}
                 >
-                    <div className="w-[90%] max-w-3xl aspect-video relative">
+                    <div className={twConfig.actionSection.videoWrapper}>
                         <iframe
-                            className="w-full h-full"
+                            className={twConfig.actionSection.iframe}
                             src="https://www.youtube.com/embed/eXWbJaz0gow?autoplay=1"
                             title="YouTube video"
                             frameBorder="0"

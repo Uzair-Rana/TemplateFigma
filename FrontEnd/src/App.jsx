@@ -9,7 +9,6 @@ import TeamSection from "./Components/TeamSection.jsx";
 import Contact from "./Components/Contact.jsx";
 import PricingTable from "./Components/PricingTable.jsx";
 import Footer from "./Components/Footer.jsx";
-
 function App() {
     return(
         <div>

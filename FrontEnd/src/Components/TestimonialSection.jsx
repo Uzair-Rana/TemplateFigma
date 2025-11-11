@@ -1,4 +1,6 @@
+// src/Components/TestimonialSection.jsx
 import React from 'react';
+import twConfig from '../config/globalTailwindConfig';
 
 // --- ASSET IMPORTS ---
 import Client1 from "../assets/Client1.jpg";
@@ -35,9 +37,9 @@ const clientData = [
 
 // --- Individual Testimonial Card Component ---
 const TestimonialCard = ({ testimonial, clientName, avatarUrl }) => (
-    <div className="p-[40px] rounded-2xl transition duration-300 ease-in-out flex flex-row gap-[30px] border border-[#ffffff] min-h-[220px] md:min-h-[230px]">
+    <div className={twConfig.testimonialSection.card.container}>
         <img
-            className="w-16 h-16 md:w-20 md:h-20 rounded-[10px] object-cover flex-shrink-0"
+            className={twConfig.testimonialSection.card.avatar}
             src={avatarUrl}
             alt={`Avatar of ${clientName}`}
             onError={(e) => {
@@ -46,35 +48,31 @@ const TestimonialCard = ({ testimonial, clientName, avatarUrl }) => (
             }}
         />
 
-        {/* Client Info (Bottom Section) - Parent div for 2 sub-divs */}
-        <div className="flex flex-col justify-between flex-1">
-            <div className="flex flex-col h-[179px]">
-                {/* Testimonial Text */}
-                <p className="text-white text-lg md:text-xl font-medium font-['DM_Sans'] leading-relaxed mb-4">
-                    {testimonial}
-                </p>
-                <span className="text-white font-bold font-['DM_Sans'] uppercase leading-6 tracking-wider text-base md:text-lg">
-                    {clientName}
-                </span>
-            </div>
+        <div className={twConfig.testimonialSection.card.contentWrapper}>
+            <p className={twConfig.testimonialSection.card.testimonialText}>
+                {testimonial}
+            </p>
+            <span className={twConfig.testimonialSection.card.clientName}>
+        {clientName}
+      </span>
         </div>
     </div>
 );
 
-// --- Main Component ---
-const App = () => {
+// --- Main Testimonial Section Component ---
+const TestimonialSection = () => {
     return (
-        <div className="min-h-screen bg-[#352F7A] font-sans py-24 px-4">
-            <div className="max-w-6xl mx-auto">
+        <div className={twConfig.testimonialSection.container}>
+            <div className={twConfig.testimonialSection.maxWrapper}>
                 {/* Section Heading */}
-                <div className="mb-16 text-center md:text-left">
-                    <h1 className="text-white text-4xl sm:text-5xl font-extrabold font-['DM_Sans'] leading-tight">
+                <div className={twConfig.testimonialSection.headingWrapper}>
+                    <h1 className={twConfig.testimonialSection.heading}>
                         Our Happy Clients
                     </h1>
                 </div>
 
                 {/* Testimonials Grid */}
-                <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+                <div className={twConfig.testimonialSection.grid}>
                     {clientData.map((client, index) => (
                         <TestimonialCard
                             key={index}
@@ -89,4 +87,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default TestimonialSection;
