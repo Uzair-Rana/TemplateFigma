@@ -1,79 +1,40 @@
 import React from "react";
-import AuthForm from "./SubComponent/AuthForm.jsx";
-import formImage from "../assets/Form.png";
-import twConfig from "../config/globalTailwindConfig";
+import AuthForm from "./SubComponent/AuthForm";
 
-export default function Form() {
-    const c = twConfig.formSection;
-
+const AuthSection = () => {
     return (
-        <div className={c.container}>
-            {/* Background overlay */}
-            <div
-                className={c.backgroundOverlay}
-                style={{
-                    backgroundImage: `url(${formImage})`,
-                    filter: "brightness(0.7) contrast(1.2)",
-                }}
-            ></div>
+        <div className="w-full min-h-screen bg-indigo-900 flex justify-center items-center px-4 p-[100px]">
+            {/* Main container */}
+            <div className="w-full max-w-[900px] flex justify-between items-center
+                      Laptop:flex-row Laptop:gap-10
+                      Tablet:flex-col Tablet:gap-8
+                      Mobile:flex-col Mobile:gap-6">
 
-            {/* Foreground content */}
-            <div
-                className={`
-          ${c.contentWrapper} 
-          Mobile:flex-col Mobile:items-center Mobile:p-2 Mobile:m-0
-          Tablet:flex-col Tablet:items-center Tablet:p-4 Tablet:m-0
-        `}
-            >
-                {/* Left Section */}
-                <div
-                    className={`
-            ${c.leftSection} 
-            Mobile:mr-0 Mobile:w-full Mobile:pt-8 Mobile:pb-8
-            Tablet:mr-0 Tablet:w-[320px] Tablet:pt-16 Tablet:pb-16
-          `}
-                    style={{
-                        ...c.leftSectionCustomStyles,
-                        paddingTop: "0",
-                        paddingBottom: "0",
-                        marginRight: "0",
-                        width: "auto",
-                        minHeight: "auto",
-                    }}
-                >
-                    <h1
-                        className={`
-              ${c.heading} 
-              Mobile:text-xl Mobile:leading-snug Mobile:mb-4
-              Tablet:text-2xl Tablet:leading-snug Tablet:mb-6
-            `}
-                    >
+                {/* --- Left Content --- */}
+                <div className="text-white flex-1 text-left Laptop:text-left Tablet:text-center Mobile:text-center">
+                    <h1 className="text-5xl font-bold font-['DM_Sans'] leading-[52px] mb-6
+                         Tablet:text-xl Tablet:leading-10
+                         Mobile:text-xl Mobile:leading-8">
                         We solve digital problems with an outstanding creative flare
                     </h1>
-
-                    <p
-                        className={`
-              ${c.paragraph} 
-              Mobile:text-xs Mobile:leading-snug
-              Tablet:text-sm Tablet:leading-snug
-            `}
-                    >
-                        We help create a new product that will help designers, developers,
-                        and companies create websites for their start-up, quickly and easily.
+                    <p className="text-base font-semibold font-['DM_Sans'] leading-6
+                        Tablet:text-xm Mobile:text-xm Tablet:max-w-[600px] Mobile:max-w-[600px]">
+                        We have created a new product that will help designers, developers
+                        and companies create websites for their startups quickly and easily.
                     </p>
                 </div>
 
-                {/* Right Section */}
-                <div
-                    className={`
-            ${c.rightSection} 
-            Mobile:w-full Mobile:mt-6 Mobile:p-0
-            Tablet:w-[350px] Tablet:mt-8 Tablet:p-2
-          `}
-                >
+                {/* --- Right Form Container --- */}
+                <div className="flex justify-center items-center
+                        Laptop:w-[470px] Laptop:h-[550px]
+                        Tablet:w-[350px] Tablet:h-auto
+                        Mobile:w-[90%] Mobile:h-auto">
                     <AuthForm />
                 </div>
+
             </div>
         </div>
     );
-}
+};
+
+export default AuthSection;
