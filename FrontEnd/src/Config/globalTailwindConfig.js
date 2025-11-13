@@ -34,8 +34,8 @@ const globalTailwindConfig = {
             blog: "left-[313px] top-0",
         },
         iconPositions: {
-            first: "left-[392px] top-[3.2px]",
-            second: "left-[448px] top-[3.2px]",
+            first: "left-[392px] top-[4px] pt-[2px]",
+            second: "left-[448px] top-[4px] pt-[2px]",
         },
         mobileTopBar: "text-white font-bold text-base text-center bg-black/50 w-[70%] rounded-md py-1 px-3 mx-auto text-[0.9rem]",
         hamburgerButton: "flex flex-col justify-center items-center w-8 h-8 space-y-1",
