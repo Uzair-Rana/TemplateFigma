@@ -211,61 +211,48 @@ const globalTailwindConfig = {
 
     testimonialSection: {
         container: `
-        relative w-full h-[800px] bg-[#352F7A] overflow-hidden mx-auto
-        Mobile:h-auto Mobile:py-10 Mobile:flex Mobile:flex-col Mobile:items-center Mobile:justify-center
-        Tablet:h-auto Tablet:py-14 Tablet:flex Tablet:flex-col Tablet:items-center Tablet:justify-center
-    `,
+            relative w-full h-auto bg-[#352F7A] overflow-hidden mx-auto
+            py-10 flex flex-col items-center justify-center
+            Mobile:py-10 Mobile:flex Mobile:flex-col Mobile:items-center Mobile:justify-center
+            Tablet:py-14 Tablet:flex Tablet:flex-col Tablet:items-center Tablet:justify-center
+        `,
 
         heading: `
-        absolute left-[215px] top-[100px] text-white text-5xl font-bold font-['DM_Sans'] leading-[52px]
-        Mobile:static Mobile:text-2xl Mobile:text-center Mobile:mb-6
-        Tablet:static Tablet:text-3xl Tablet:text-center Tablet:mb-8
-    `,
-
-        topRow: `
-        absolute top-[192px] left-[100px] flex flex-row gap-[45px]
-        Mobile:static Mobile:flex Mobile:flex-col Mobile:items-center Mobile:gap-6
-        Tablet:static Tablet:flex Tablet:flex-col Tablet:items-center Tablet:gap-8
-    `,
-
-        bottomRow: `
-        absolute top-[459px] left-[100px] flex flex-row gap-[45px]
-        Mobile:static Mobile:flex Mobile:flex-col Mobile:items-center Mobile:gap-6
-        Tablet:static Tablet:flex Tablet:flex-col Tablet:items-center Tablet:gap-8
-    `,
+            text-white text-5xl font-bold font-['DM_Sans'] leading-[52px] mb-10
+            Mobile:text-2xl Mobile:text-center Mobile:mb-6
+            Tablet:text-3xl Tablet:text-center Tablet:mb-8
+        `,
 
         cardWrapper: `
-        relative w-[470px] h-[240px]
-        Mobile:w-[90%] Mobile:max-w-[340px] Mobile:h-auto
-        Tablet:w-[80%] Tablet:max-w-[400px] Tablet:h-auto
-    `,
+            relative w-[470px] h-[240px] mb-6
+            Mobile:w-[90%] Mobile:max-w-[340px] Mobile:h-auto
+            Tablet:w-[80%] Tablet:max-w-[400px] Tablet:h-auto
+        `,
 
         cardBorder: `
-        absolute inset-0 border-2 border-white/10 rounded-[10px]
-        Mobile:relative Mobile:w-full Mobile:h-full
-        Tablet:relative Tablet:w-full Tablet:h-full
-    `,
+            absolute inset-0 border-2 border-white/10 rounded-[10px]
+            Mobile:relative Mobile:w-full Mobile:h-full
+            Tablet:relative Tablet:w-full Tablet:h-full
+        `,
 
         avatar: `
-        absolute left-[35px] top-[36px] w-[70px] h-[70px] rounded-[10px] object-cover
-        Mobile:relative Mobile:top-0 Mobile:left-0 Mobile:mx-auto Mobile:w-[60px] Mobile:h-[60px] Mobile:mt-4
-        Tablet:relative Tablet:top-0 Tablet:left-0 Tablet:mx-auto Tablet:w-[65px] Tablet:h-[65px] Tablet:mt-5
-    `,
+            absolute left-[35px] top-[36px] w-[70px] h-[70px] rounded-[10px] object-cover
+            Mobile:relative Mobile:top-0 Mobile:left-0 Mobile:mx-auto Mobile:w-[60px] Mobile:h-[60px] Mobile:mt-4
+            Tablet:relative Tablet:top-0 Tablet:left-0 Tablet:mx-auto Tablet:w-[65px] Tablet:h-[65px] Tablet:mt-5
+        `,
 
         testimonialText: `
-        absolute left-[135px] top-[35px] w-[320px] text-white text-sm font-medium font-['DM_Sans'] leading-[28px]
-        Mobile:relative Mobile:left-0 Mobile:top-0 Mobile:text-center Mobile:w-[90%] Mobile:mt-4
-        Tablet:relative Tablet:left-0 Tablet:top-0 Tablet:text-center Tablet:w-[90%] Tablet:mt-4
-    `,
+            absolute left-[135px] top-[35px] w-[320px] text-white text-sm font-medium font-['DM_Sans'] leading-[28px]
+            Mobile:relative Mobile:left-0 Mobile:top-0 Mobile:text-center Mobile:w-[90%] Mobile:mt-4
+            Tablet:relative Tablet:left-0 Tablet:top-0 Tablet:text-center Tablet:w-[90%] Tablet:mt-4
+        `,
 
         clientName: `
-        absolute left-[135px] top-[188px] text-white text-sm font-bold font-['DM_Sans'] uppercase leading-[24px] tracking-[0.15em] opacity-30
-        Mobile:relative Mobile:left-0 Mobile:top-0 Mobile:text-center Mobile:mt-3
-        Tablet:relative Tablet:left-0 Tablet:top-0 Tablet:text-center Tablet:mt-3
-    `,
+            absolute left-[135px] top-[188px] text-white text-sm font-bold font-['DM_Sans'] uppercase leading-[24px] tracking-[0.15em] opacity-30
+            Mobile:relative Mobile:left-0 Mobile:top-0 Mobile:text-center Mobile:mt-3
+            Tablet:relative Tablet:left-0 Tablet:top-0 Tablet:text-center Tablet:mt-3
+        `,
     },
-
-
     actionSection: {
         container: "relative mx-auto h-[605px] bg-indigo-900 overflow-hidden",
         backgroundImage: "w-full h-full object-cover",
